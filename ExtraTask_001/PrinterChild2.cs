@@ -4,7 +4,7 @@ namespace ExtraTask_001
 {
     class PrinterChild2 : PrinterChild1
     {
-        Random r = new Random();
+        Random r = new Random(); // Зачем?
         public override void Print(string value)
         {
             Console.ForegroundColor = ConsoleColor.Green;

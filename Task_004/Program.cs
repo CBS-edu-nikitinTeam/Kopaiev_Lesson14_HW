@@ -9,7 +9,9 @@ namespace Task_004
         static void Main(string[] args)
         {
             // Создаю и заполняю словарь с ключами
-            Dictionary<string, string> cdkeys = new Dictionary<string, string>();
+            Dictionary<string, string> cdkeys = new Dictionary<string, string>(); // Не вижу смысла создавать словарь,
+                                                                                  // если ты его используешь только на 22 строке.
+                                                                                  // Ну для практики пойдет.
             cdkeys.Add("pro","prokey");
             cdkeys.Add("expert","extrakey");
 
@@ -17,34 +19,32 @@ namespace Task_004
             Console.WriteLine("Пожалуйста введите ключ для разблокировки Pro и Expert версии. Если нет просто нажмите Enter");
             string userKey = Console.ReadLine();
 
+            DocumentWorker dw;
             // Проверка ключа от пользователя, и использование версии согласно ключу
             if (cdkeys.ContainsValue(userKey))
             {
+                // Правильная реализация.
                 if (userKey == "prokey")
                 {
                     Console.WriteLine("Спачибо что выбрали нашу Pro версию\n");
-                    ProDocumentWorker dw = new ProDocumentWorker();
-                    dw.OpenDocument();
-                    dw.EditDocument();
-                    dw.SaveDocument();
+                    dw = new ProDocumentWorker();
                 }
                 else
                 {
                     Console.WriteLine("Спачибо что выбрали нашу Expert версию\n");
-                    ExpertDocumentWorker dw = new ExpertDocumentWorker();
-                    dw.OpenDocument();
-                    dw.EditDocument();
-                    dw.SaveDocument();
+                    dw = new ExpertDocumentWorker(); // Вот что значит преведение.
                 }
             }
             else // default block.
             {
                 Console.WriteLine("Програмный ключ не обнаружен в базе\n");
-                DocumentWorker dw = new  DocumentWorker();
-                dw.OpenDocument();
-                dw.EditDocument();
-                dw.SaveDocument();
+                dw = new  DocumentWorker();
             }
+
+            dw.OpenDocument();
+            dw.EditDocument();
+            dw.SaveDocument();
+
             // Delay
             Console.ReadKey();
         }

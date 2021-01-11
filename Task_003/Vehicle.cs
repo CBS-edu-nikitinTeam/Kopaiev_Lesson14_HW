@@ -19,7 +19,8 @@ namespace Task_003
             this.year = year;
         }
 
-        protected void ShowDetails()
+        protected void ShowDetails() // А почему ты не хочешь пометить метод как virtual, чтобы было возможность
+                                     // не заместить,  а переопределить? 
         {
             Console.WriteLine(coordX);
             Console.WriteLine(coordY);
